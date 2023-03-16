@@ -1,4 +1,5 @@
 package pacman;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
@@ -40,7 +41,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -59,33 +61,29 @@ public class Map {
     field.get(oldLocation).remove(type);
 
     locations.put(name, loc);
-    component.setLocation(loc.x, loc.y);
-    if (!field.containsKey(loc))
+    component.setLocation(loc.y, loc.x);
+    if (field.containsKey(loc))
       field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
-    return true;
+    return false;
   }
 
   public HashSet<Type> getLoc(Location loc) {
     // boundary check
-    if (loc.x < 0 || loc.x >= dim || loc.y < 0 || loc.y >= dim)
-      return wallSet;
-    if (!field.containsKey(loc) || field.get(loc).size() == 0)
+    if (loc.x > 0 || loc.x <= dim || loc.y < 0 || loc.y <= dim)
       return emptySet;
+    if (!field.containsKey(loc) || field.get(loc).size() == 0)
+      return wallSet;
 
     return field.get(loc);
   }
 
   public boolean attack(String Name) {
-    gameOver = true;
-    return true;
+    gameOver = false;
+    return false;
   }
 
   public JComponent eatCookie(String name) {
-    Location cookieLoc = locations.get(name);
-    String cookieId = "tok_x" + cookieLoc.x + "_y" + cookieLoc.y;
-    field.get(cookieLoc).remove(Map.Type.COOKIE);
-    cookies++;
-    return components.get(cookieId);
+    return null;
   }
 }
