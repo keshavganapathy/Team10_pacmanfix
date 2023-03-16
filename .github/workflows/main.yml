@@ -37,7 +37,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestPacManMove
           
   TestGhostInRange:
@@ -48,7 +48,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestGhostInRange
          
   TestConsume:
@@ -59,7 +59,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestGhostInRange
           
   ghostValidMoves:
@@ -70,7 +70,7 @@ jobs:
       - name: Compile
         run: |
           cd Projects/P1
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestGhostValidMoves
           
   ghostMove:
@@ -81,7 +81,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestGhostMove
           
   pacmanInRange:
@@ -92,7 +92,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestPacManInRange
           
   attack:
@@ -103,7 +103,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestAttack
           
   mapMove:
@@ -114,7 +114,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-           /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestMapMove
   getLoc:
     runs-on: ubuntu-latest
@@ -124,7 +124,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestMapGetLoc
           
   eatCookie:
@@ -135,7 +135,7 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestMapEatCookie
           
   mapAttack:
@@ -146,5 +146,5 @@ jobs:
       - name: Compile
         run: |
           cd P2
-          /gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
           ./gradlew test --tests TestMapAttack
