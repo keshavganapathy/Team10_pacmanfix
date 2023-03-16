@@ -16,5 +16,5 @@ jobs:
       - name: Compile Java Classes
         run: |
          cd P2
-         gradlew build testClasses -x test
+         ./gradlew build testClasses -x test
         
