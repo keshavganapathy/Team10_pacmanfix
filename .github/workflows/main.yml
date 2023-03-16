@@ -95,7 +95,7 @@ jobs:
           ./gradlew build testClasses -x test
           ./gradlew test --tests TestPacManInRange
           
-  attack:
+  Testattack:
     runs-on: ubuntu-latest
     container: openjdk:13
     steps:
@@ -104,7 +104,7 @@ jobs:
         run: |
           cd P2
           ./gradlew build testClasses -x test
-          ./gradlew test --tests TestAttack
+          ./gradlew test --tests TestGhostAttack
           
   mapMove:
     runs-on: ubuntu-latest
