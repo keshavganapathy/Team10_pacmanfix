@@ -18,3 +18,133 @@ jobs:
          cd P2
          ./gradlew build testClasses -x test
         
+  TestPacManValidMoves:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          ./gradlew build testClasses -x test
+          ./gradlew test --tests TestPacManValidMoves
+          
+  TestPacManMove:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestPacManMove
+          
+  TestGhostInRange:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestGhostInRange
+         
+  TestConsume:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestGhostInRange
+          
+  ghostValidMoves:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd Projects/P1
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestGhostValidMoves
+          
+  ghostMove:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestGhostMove
+          
+  pacmanInRange:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestPacManInRange
+          
+  attack:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestAttack
+          
+  mapMove:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+           /gradlew build testClasses -x test
+          ./gradlew test --tests TestMapMove
+  getLoc:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestMapGetLoc
+          
+  eatCookie:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestMapEatCookie
+          
+  mapAttack:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: |
+          cd P2
+          /gradlew build testClasses -x test
+          ./gradlew test --tests TestMapAttack
