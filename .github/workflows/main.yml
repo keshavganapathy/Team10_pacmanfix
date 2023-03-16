@@ -20,7 +20,7 @@ jobs:
         
   TestPacManValidMoves:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -31,7 +31,7 @@ jobs:
           
   TestPacManMove:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -42,7 +42,7 @@ jobs:
           
   TestGhostInRange:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -53,7 +53,7 @@ jobs:
          
   TestConsume:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -64,7 +64,7 @@ jobs:
           
   ghostValidMoves:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -75,7 +75,7 @@ jobs:
           
   ghostMove:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -86,7 +86,7 @@ jobs:
           
   pacmanInRange:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -97,7 +97,7 @@ jobs:
           
   attack:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -108,7 +108,7 @@ jobs:
           
   mapMove:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -118,7 +118,7 @@ jobs:
           ./gradlew test --tests TestMapMove
   getLoc:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -129,7 +129,7 @@ jobs:
           
   eatCookie:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -140,7 +140,7 @@ jobs:
           
   mapAttack:
     runs-on: ubuntu-latest
-    container: openjdk
+    container: openjdk:13
     steps:
       - uses: actions/checkout@v2
       - name: Compile
