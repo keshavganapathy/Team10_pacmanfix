@@ -41,7 +41,7 @@ public class PacMan {
       return false;
 
     this.myLoc = validMoves.get(choice);
-    return false;
+    return true;
   }
 
   public boolean is_ghost_in_range() {
