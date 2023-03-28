@@ -58,6 +58,7 @@ public class PacMan {
   }
 
   public JComponent consume() {
-    return new CookieComponent(0, 0, 20);
+    // Calls cookie method that handles everything
+    return myMap.eatCookie(myName);
   }
 }
