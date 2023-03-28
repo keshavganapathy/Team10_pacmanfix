@@ -55,16 +55,30 @@ public class Map {
   }
 
   public boolean move(String name, Location loc, Type type) {
-    Location oldLocation = locations.get(name);
-    JComponent component = components.get(name);
-
-    field.get(oldLocation).remove(type);
-
-    locations.put(name, loc);
-    component.setLocation(loc.y, loc.x);
-    if (field.containsKey(loc))
-      field.put(loc, new HashSet<Type>());
-    field.get(loc).add(type);
+    // Update field locations and jcomponent
+    if (name.equals("pacman")){
+      HashSet<Type>  old = new HashSet<>();
+      old.add(Type.EMPTY);
+      Location old_loc = locations.get(name);
+      HashSet<Type>  new_set = new HashSet<>();
+      new_set.add(Type.PACMAN);
+      locations.put(name, loc);
+      field.put(old_loc, old);
+      field.put(loc, new_set);
+      components.get(name).setLocation(loc.x, loc.y);
+      return true;
+    }else if ((name.equals("Inky") || name.equals("Blinky") || name.equals("Pinky") || name.equals("Clyde"))){
+      HashSet<Type>  old = new HashSet<>();
+      old.add(Type.EMPTY);
+      Location old_loc = locations.get(name);
+      HashSet<Type>  new_set = new HashSet<>();
+      new_set.add(Type.GHOST);
+      locations.put(name, loc);
+      field.put(old_loc, old);
+      field.put(loc, new_set);
+      components.get(name).setLocation(loc.x, loc.y);
+      return true;
+    }
     return false;
   }
 
