@@ -48,8 +48,8 @@ public class PacMan {
       for (int dy = -1; dy <= 1; dy++) {
         Location newLocation = myLoc.shift(dy, dx);
 
-        if (myMap.getLoc(newLocation).contains(Map.Type.PACMAN))
-          return false;
+        if (myMap.getLoc(newLocation).contains(Map.Type.GHOST))
+          return true;
       }
     }
 
