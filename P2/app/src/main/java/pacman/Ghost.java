@@ -22,8 +22,7 @@ public class Ghost {
         Location newLocation = myLoc.shift(dx, dy);
 
         HashSet<Map.Type> types = myMap.getLoc(newLocation);
-        if (types.contains(Map.Type.WALL) ||
-            (types.size() == 1 && types.contains(Map.Type.PACMAN)))
+        if (types.contains(Map.Type.WALL) == false && !newLocation.equals(myLoc)) 
           validMoves.add(newLocation);
       }
     }
@@ -40,7 +39,7 @@ public class Ghost {
       return false;
 
     this.myLoc = validMoves.get(choice);
-    return false;
+    return true;
   }
 
   public boolean is_pacman_in_range() {
@@ -48,7 +47,7 @@ public class Ghost {
       for (int dy = -1; dy <= 1; dy++) {
         Location newLocation = myLoc.shift(dy, dx);
 
-        if (myMap.getLoc(newLocation).contains(Map.Type.COOKIE))
+        if (myMap.getLoc(newLocation).contains(Map.Type.PACMAN))
           return true;
       }
     }
@@ -57,6 +56,6 @@ public class Ghost {
   }
 
   public boolean attack() {
-    return is_pacman_in_range() || myMap.attack(myName);
+    return is_pacman_in_range() && myMap.attack(myName);
   }
 }

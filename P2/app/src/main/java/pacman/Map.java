@@ -55,35 +55,114 @@ public class Map {
   }
 
   public boolean move(String name, Location loc, Type type) {
-    Location oldLocation = locations.get(name);
-    JComponent component = components.get(name);
-
-    field.get(oldLocation).remove(type);
-
-    locations.put(name, loc);
-    component.setLocation(loc.y, loc.x);
-    if (field.containsKey(loc))
-      field.put(loc, new HashSet<Type>());
-    field.get(loc).add(type);
+    // Update field locations and jcomponent
+    if (name.equals("pacman")){
+      HashSet<Type>  old = new HashSet<>();
+      old.add(Type.EMPTY);
+      Location old_loc = locations.get(name);
+      HashSet<Type>  new_set = new HashSet<>();
+      new_set.add(Type.PACMAN);
+      locations.put(name, loc);
+      field.put(old_loc, old);
+      field.put(loc, new_set);
+      components.get(name).setLocation(loc.x, loc.y);
+      return true;
+    }else if ((name.equals("Inky") || name.equals("Blinky") || name.equals("Pinky") || name.equals("Clyde"))){
+      HashSet<Type>  old = new HashSet<>();
+      old.add(Type.EMPTY);
+      Location old_loc = locations.get(name);
+      HashSet<Type>  new_set = new HashSet<>();
+      new_set.add(Type.GHOST);
+      locations.put(name, loc);
+      field.put(old_loc, old);
+      field.put(loc, new_set);
+      components.get(name).setLocation(loc.x, loc.y);
+      return true;
+    }
     return false;
   }
 
   public HashSet<Type> getLoc(Location loc) {
     // boundary check
-    if (loc.x > 0 || loc.x <= dim || loc.y < 0 || loc.y <= dim)
+    if (loc.x < 0 || loc.x >= dim || loc.y < 0 || loc.y >= dim)
       return emptySet;
     if (!field.containsKey(loc) || field.get(loc).size() == 0)
-      return wallSet;
+      return emptySet;
 
     return field.get(loc);
   }
 
   public boolean attack(String Name) {
-    gameOver = false;
+    Location curr = locations.get(Name);
+    int x = curr.x;
+    int y = curr.y;
+
+    HashSet<Type> around = getLoc(new Location(x+1,y));
+    if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x-1,y));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x,y+1));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x,y-1));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x+1,y+1));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x+1,y-1));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x-1,y+1));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
+    around = getLoc(new Location(x-1,y-1));
+     if(around.contains(Map.Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    }
+
     return false;
   }
 
   public JComponent eatCookie(String name) {
-    return null;
+     // update locations, components, field, and cookies
+    // the id for a cookie at (10, 1) is tok_x10_y1
+    Location loc = locations.get(name); // Gets location of pacman
+    String id = "tok_x" + loc.x + "_y" + loc.y;
+    JComponent output = components.get(id);
+
+    if (output != null) {
+      cookies++;
+      field.get(loc).remove(Map.Type.COOKIE); // Removes from field
+      locations.remove(id);
+      components.remove(id);
+    }
+      
+    // returns output
+    return output;
   }
 }
