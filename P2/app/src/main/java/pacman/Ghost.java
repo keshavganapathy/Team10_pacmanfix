@@ -22,8 +22,7 @@ public class Ghost {
         Location newLocation = myLoc.shift(dx, dy);
 
         HashSet<Map.Type> types = myMap.getLoc(newLocation);
-        if (types.contains(Map.Type.WALL) ||
-            (types.size() == 1 && types.contains(Map.Type.PACMAN)))
+        if (types.contains(Map.Type.WALL) == false)
           validMoves.add(newLocation);
       }
     }
