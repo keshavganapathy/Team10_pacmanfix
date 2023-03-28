@@ -21,9 +21,9 @@ public class PacMan {
     for (int dx = -1; dx <= 1; dx++) {
       for (int dy = -1; dy <= 1; dy++) {
         Location newLocation = myLoc.shift(dx, dy);
-
+        
         HashSet<Map.Type> types = myMap.getLoc(newLocation);
-        if (types.contains(Map.Type.WALL) == false)
+        if (types.contains(Map.Type.WALL) == false && !newLocation.equals(myLoc))
           validMoves.add(newLocation);
       }
     }
@@ -36,7 +36,7 @@ public class PacMan {
     int choice = (int) (Math.random() * validMoves.size());
 
     if (validMoves.size() == 0 ||
-        myMap.move(myName, validMoves.get(choice), Map.Type.PACMAN))
+        !myMap.move(myName, validMoves.get(choice), Map.Type.PACMAN))
       return false;
 
     this.myLoc = validMoves.get(choice);

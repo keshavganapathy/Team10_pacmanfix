@@ -87,7 +87,7 @@ public class Map {
     if (loc.x < 0 || loc.x >= dim || loc.y < 0 || loc.y >= dim)
       return emptySet;
     if (!field.containsKey(loc) || field.get(loc).size() == 0)
-      return wallSet;
+      return emptySet;
 
     return field.get(loc);
   }
